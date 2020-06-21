@@ -1,0 +1,250 @@
+html,body{
+    margin: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+    position:relative;
+}
+
+@font-face {
+    font-family: 'Pinyon';
+    src: url('fonts/Pinyon_Script/PinyonScript-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Lora';
+    src: url('fonts/Lora/Lora-Regular.ttf');
+}
+
+/* section header*/
+header{
+    background-image: url(medias/jean.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+header h1{
+    text-align: center;
+    padding: 170px 0;
+    font-size: 150px;
+    font-weight: 100;
+    color: white;
+    font-family: 'Pinyon';
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* section nav*/
+#menuToggle{
+    display: none; /* cache menu burger */
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 6%;
+    align-items: center;
+    border-bottom: 2px solid black;
+}
+nav ul{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    width: 40%;
+    padding: 0;
+    margin: 0;
+    padding: 7px 0;
+    box-sizing: border-box;
+}
+nav ul li a{
+    text-decoration: none;
+    font-size: 24px;
+    color: #4d4353;
+    font-family: 'Lora';
+    padding-top: 4px;
+}
+nav ul li a:hover{
+    border-top: 3px solid black;  
+}
+nav form{
+    display: flex;
+    align-items: center;
+}
+nav form input:first-child{
+    padding: 14px 0;
+    width: 225px;
+    padding-left: 13px;
+    border: 0;
+    background-color: #4b4b4b;
+    color: #727074;
+}
+nav form input:last-child{
+    padding-left: 8px;
+}
+/* section main*/
+.main{
+    display: flex;
+    justify-content: space-between;
+    padding: 3% 6%;
+    color:#372b3f;
+    font-family: 'Lora';
+}
+.main h2, h3{
+    font-size: 20px;
+}
+/* section cards*/
+.cards{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.cards div{
+    width:20%;
+    text-align: center;
+}
+.cards div img{
+    width: 100%;
+}
+.cards div p{
+    text-align: justify;
+    font-size: 18px;
+    color: #372b3f;
+}
+/* section social link*/
+.social-link{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 6%;
+    padding-top: 3%;
+    padding-bottom: 1%;
+}
+.social-link img:first-child{
+    padding-right: 8px;
+}
+/* section footer*/
+footer {
+   border-top: 8px solid #372b3f; 
+}
+footer p{
+    padding: 0 6%;
+    font-size: 18px;
+    color: #372b3f;
+    font-family: 'Lora';
+}
+
+/* mediaqueries */
+@media (max-width: 480px){
+
+header h1{
+    padding: 50px 0;
+    font-size: 70px;
+}
+.main{
+    flex-direction: column-reverse;
+    text-align: center;
+}
+.main h2, h3{
+    font-size: 18px;
+}
+.cards{
+    flex-direction: column;
+}
+.cards div{
+    width: 100%;
+} 
+nav{
+    flex-direction: row-reverse;
+}  
+
+/* burger menu mobile */
+nav >ul{
+    display: none; /* cache menu bureau */
+}
+#menuToggle
+{ 
+  display: block;
+  position: relative;
+  top: 4px; /* positionner menu*/
+  left: 0px; /* positionner menu*/
+  z-index: 1; 
+  -webkit-user-select: none;
+  user-select: none;
+}
+#menuToggle input /* checkbox */
+{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px; 
+  cursor: pointer; 
+  opacity: 0; 
+  z-index: 2; 
+  -webkit-touch-callout: none;
+}
+#menuToggle span
+{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  background: black; /* changer couleur span */
+  border-radius: 3px; 
+  z-index: 1;
+  transform-origin: 4px 0px;
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+#menuToggle span:first-child /* anim croix */
+{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)/* anim croix */
+{
+  transform-origin: 0% 100%;
+}
+#menuToggle input:checked ~ span /* anim croix */
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+#menuToggle input:checked ~ span:nth-last-child(3) /* anim croix */
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+/* open menu*/
+#menu
+{
+  text-align: center; /*centrer li */
+  flex-direction: column; /* li en colonne */
+  position: absolute;
+  width: 100vw; /* largeur menu dropdown */
+  margin: 6px -29px 0 0; /* position dropdown */
+  padding: 10px 0px 10px 0px;
+  background: #ededed;
+  transform-origin: 0% 0%;
+  right: 0;
+  transform: translate(+100%, 0); /* change open/close direction (y,x)*/
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+#menu li
+{
+  padding: 10px 0;
+  font-size: 20px;
+}
+#menuToggle input:checked ~ ul
+{
+  transform: none;
+}
+}
+/* fin menu burger*/
